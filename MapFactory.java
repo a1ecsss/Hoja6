@@ -14,6 +14,8 @@ public class MapFactory {
                 return new TreeMap<>();
             case 3:
                 return new LinkedHashMap<>();
+            default:
+                return null;
         }
     }
 }
