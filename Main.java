@@ -7,7 +7,6 @@ public class Main {
         int mapOption = 0;
         boolean entradaValida = false;
 
-        // Solicita al usuario seleccionar el tipo de Map válido
         while (!entradaValida) {
             System.out.println("Seleccione la implementación de Map:");
             System.out.println("1. HashMap");
@@ -17,7 +16,7 @@ public class Main {
 
             String entrada = scanner.nextLine().trim();
 
-            if (entrada.matches("[1-3]")) {
+            if (entrada.matches("[1-3]")) { // Verifica si la entrada es un número entre 1 y 3
                 mapOption = Integer.parseInt(entrada);
                 entradaValida = true;
             } else {
@@ -28,7 +27,6 @@ public class Main {
         try {
             PokemonGestor gestor = new PokemonGestor(mapOption);
 
-            // Menú de opciones
             while (true) {
                 System.out.println("\nOpciones:");
                 System.out.println("1. Agregar un Pokemon a tu coleccion");
@@ -49,17 +47,34 @@ public class Main {
                     continue;
                 }
 
-                // Ejecuta la opción seleccionada
                 switch (opcion) {
                     case 1:
                         System.out.print("Ingrese el nombre del Pokemon que desea agregar: ");
-                        String nom = scanner.nextLine().trim().toLowerCase();
+                        String nom = scanner.nextLine();
                         gestor.agregarPkm(nom);
+                        break;
+                    case 2:
+                        System.out.print("Ingrese el nombre del Pokemon: ");
+                        String nomMostrar = scanner.nextLine();
+                        gestor.mostrarPkm(nomMostrar);
+                        break;
+                    case 3:
+                        gestor.mostrarColeccion();
+                        break;
+                    case 4:
+                        gestor.mostrarTodos();
+                        break;
+                    case 5:
+                        System.out.print("Ingrese la habilidad a buscar: ");
+                        String hab = scanner.nextLine();
+                        gestor.buscarPorHab(hab);
                         break;
                     case 6:
                         System.out.println("Saliendo del programa... Vuelve pronto :D");
                         scanner.close();
                         return;
+                    default:
+                        System.out.println("Opcion invalida.");
                 }
             }
         } catch (IOException e) {

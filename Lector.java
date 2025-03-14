@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Lector {
     
-    // Carga los Pokémon desde un archivo CSV y los almacena en un mapa
+    // Carga los Pokemon desde un archivo CSV y los almacena en un mapa
     public static Map<String, Pokemon> cargarPokemones(String ruta) throws IOException {
         Map<String, Pokemon> pokemones = new HashMap<>();
         try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
@@ -15,7 +15,8 @@ public class Lector {
                 String[] datos = linea.split(",");
                 if (datos.length < 4) continue;
 
-                String nom = datos[0].trim();
+                // nombre en minusculas y sin espacios
+                String nom = datos[0].trim().toLowerCase();
                 String tp1 = datos[1].trim();
                 String tp2 = datos[2].trim();
                 List<String> habs = Arrays.asList(datos[3].split(";"));

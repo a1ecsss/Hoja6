@@ -5,7 +5,7 @@ import java.util.TreeMap;
 
 public class MapFactory {
     
-    // Devuelve una implementación de Map según el tipo seleccionado por el usuario
+    // Devuelve una implementacion de Map según el tipo seleccionado por el usuario
     public static Map<String, Pokemon> getMap(int type) {
         switch (type) {
             case 1:
